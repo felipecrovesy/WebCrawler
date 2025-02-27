@@ -10,12 +10,20 @@ namespace WebCrawler.Core.UseCases.CrawlProxies
     public class CrawlProxiesUseCase
     {
         private readonly ICrawlProxiesRepository _repository;
+        private readonly IExportFiles _exportFiles;
+        private readonly IDirectoryCreator _directoryCreator;
         private const string Url = "https://proxyservers.pro/proxy/list/order/updated/order_dir/desc";
         private const int TotalOfProprieties = 6;
 
-        public CrawlProxiesUseCase(ICrawlProxiesRepository repository)
+        public CrawlProxiesUseCase(
+            ICrawlProxiesRepository repository,
+            IDirectoryCreator directoryCreator,
+            IExportFiles exportFiles
+            )
         {
             _repository = repository;
+            _exportFiles = exportFiles;
+            _directoryCreator = directoryCreator;
         }
 
         public async Task Handle()
@@ -70,7 +78,11 @@ namespace WebCrawler.Core.UseCases.CrawlProxies
             var finalDate = DateTime.Now;
             var pageNumbers = 1; //TODO: Consertar a lógica de Paginação
 
-            await _repository.Save(initialDate, finalDate, pageNumbers, proxyList, jsonFile, driver);
+            var dbDirectory = Path.Combine(AppContext.BaseDirectory, "assets", "database");
+            var dbPath = Path.Combine(dbDirectory, "executionsLog.db");
+            
+            await _directoryCreator.Create(dbDirectory, dbPath);
+            await _repository.Save(initialDate, finalDate, pageNumbers, proxyList, jsonFile, driver, dbPath);
             
             Console.WriteLine("Dados da execução salvos no banco de dados.");
         }
@@ -80,19 +92,17 @@ namespace WebCrawler.Core.UseCases.CrawlProxies
             var jsonDirectory = Path.Combine(AppContext.BaseDirectory, "assets", "jsonFiles");
             var jsonFileName = Path.Combine(jsonDirectory, $"proxy_data_{DateTime.UtcNow:yyyyMMdd_HHmmss}.json");
 
-            await File.WriteAllTextAsync(jsonFileName, jsonFile);
-            
-            Console.WriteLine($"Dados extraídos e salvos em {jsonFileName}");
+            await _directoryCreator.Create(jsonDirectory, jsonFileName);
+            await _exportFiles.WriteFile(jsonFileName, jsonFile);
         }
 
         private async Task CapturePageHtml(string driver)
         {
             var htmlDirectory = Path.Combine(AppContext.BaseDirectory, "assets", "HtmlFiles");
-            var htmlFileName = Path.Combine(htmlDirectory, $"pagina_web_{DateTime.Now:yyyyMMdd_HHmmss}.html");
-            
-            await File.WriteAllTextAsync(htmlFileName, driver);
-            
-            Console.WriteLine($"Página salva em {htmlFileName}");
+            var htmlFileName = Path.Combine(htmlDirectory, $"pagina_web_{DateTime.UtcNow:yyyyMMdd_HHmmss}.html");
+
+            await _directoryCreator.Create(htmlDirectory, htmlFileName);
+            await _exportFiles.WriteFile(htmlFileName, driver);
         }
     }
 }

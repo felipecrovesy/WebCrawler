@@ -5,27 +5,18 @@ namespace WebCrawler.Infrastructure.Repositories;
 
 public class CrawlProxiesRepository : ICrawlProxiesRepository
 {
-    private static readonly string DbDirectory = Path.Combine(AppContext.BaseDirectory, "assets", "database");
-    private static readonly string DbPath = Path.Combine(DbDirectory, "executionsLog.db");
-
     public Task Save(
         DateTime initialDate, 
         DateTime finalDate, 
         int pageNumbers, 
         int numberLines,
         string jsonFile, 
-        string pageSource)
+        string pageSource,
+        string dbPath)
     {
-        if (!Directory.Exists(DbDirectory))
-        {
-            Directory.CreateDirectory(DbDirectory);
-        }
-
-        if (File.Exists(DbPath)) return Task.CompletedTask;
+        SQLiteConnection.CreateFile(dbPath);
         
-        SQLiteConnection.CreateFile(DbPath);
-        
-        using (var connection = new SQLiteConnection($"Data Source={DbPath}"))
+        using (var connection = new SQLiteConnection($"Data Source={dbPath}"))
         {
             connection.Open();
             var createTableQuery = @"
