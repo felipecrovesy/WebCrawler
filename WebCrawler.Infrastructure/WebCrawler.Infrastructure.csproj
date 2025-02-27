@@ -12,9 +12,19 @@
 
     <ItemGroup>
       <PackageReference Include="DBContext" Version="1.0.0" />
-      <PackageReference Include="HtmlAgilityPack" Version="1.11.73" />
-      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.2" />
-      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+      <PackageReference Include="System.Data.SQLite" Version="1.0.119" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Remove="Data\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <EmbeddedResource Remove="Data\**" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Data\**" />
     </ItemGroup>
 
 </Project>
