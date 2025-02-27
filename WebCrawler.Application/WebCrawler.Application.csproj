@@ -8,11 +8,11 @@
 
     <ItemGroup>
       <ProjectReference Include="..\WebCrawler.Core\WebCrawler.Core.csproj" />
+      <ProjectReference Include="..\WebCrawler.Infrastructure\WebCrawler.Infrastructure.csproj" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="DTOs\" />
-      <Folder Include="Services\" />
     </ItemGroup>
 
 </Project>

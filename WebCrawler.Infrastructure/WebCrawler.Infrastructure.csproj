@@ -11,9 +11,10 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Folder Include="Data\" />
-      <Folder Include="Repositories\" />
-      <Folder Include="Services\" />
+      <PackageReference Include="DBContext" Version="1.0.0" />
+      <PackageReference Include="HtmlAgilityPack" Version="1.11.73" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.2" />
+      <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     </ItemGroup>
 
 </Project>
