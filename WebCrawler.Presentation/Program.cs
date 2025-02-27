@@ -3,12 +3,15 @@ using Microsoft.Extensions.Hosting;
 using WebCrawler.Core.Ports;
 using WebCrawler.Core.UseCases.CrawlProxies;
 using WebCrawler.Infrastructure.Repositories;
+using WebCrawler.Infrastructure.Tools;
 
 using var host = Host.CreateDefaultBuilder(args)
     .ConfigureServices(services =>
     {
-        services.AddTransient<CrawlProxiesUseCase>();
-        services.AddTransient<ICrawlProxiesRepository, CrawlProxiesRepository>();
+        services.AddScoped<CrawlProxiesUseCase>();
+        services.AddScoped<ICrawlProxiesRepository, CrawlProxiesRepository>();
+        services.AddScoped<IDirectoryCreator, DirectoryCreator>();
+        services.AddScoped<IExportFiles, ExportFiles>();
     })
     .Build();
 
