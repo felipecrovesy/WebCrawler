@@ -1,4 +1,3 @@
-// DirectoryCreator.cs
 using System.IO.Abstractions;
 using WebCrawler.Core.Ports;
 
