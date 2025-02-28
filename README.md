@@ -81,6 +81,7 @@ git clone https://github.com/felipecrovesy/WebCrawler.git
 ```bash
 dotnet run WebCrawler.Presentation
 ```
+Os inputs ficam salvos em ```./WebCrawler/WebCrawler.Presentation/bin/Debug/net9.0```
 
 **03 - Rodar os Tests**
 
@@ -89,6 +90,7 @@ Acesse WebCrawler.UnitTest via terminal
 ```bash
 dotnet test
 ```
+<br>
 
 ## <a name="contributing">🤝 Contribuições</a>
 
