@@ -12,6 +12,7 @@
     <ItemGroup>
         <PackageReference Include="coverlet.collector" Version="6.0.0"/>
         <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.8.0"/>
+        <PackageReference Include="Moq" Version="4.20.72" />
         <PackageReference Include="System.IO.Abstractions" Version="22.0.10" />
         <PackageReference Include="System.IO.Abstractions.TestingHelpers" Version="22.0.10" />
         <PackageReference Include="xunit" Version="2.5.3"/>
@@ -26,6 +27,17 @@
       <ProjectReference Include="..\WebCrawler.Core\WebCrawler.Core.csproj" />
       <ProjectReference Include="..\WebCrawler.Infrastructure\WebCrawler.Infrastructure.csproj" />
       <ProjectReference Include="..\WebCrawler.Presentation\WebCrawler.Presentation.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Infrastructure\jsonFileForTest\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Infrastructure\jsonFileForTest\product_data_page_1_20250228_041245.json" />
+      <Content Include="Infrastructure\jsonFileForTest\product_data_page_1_20250228_041245.json">
+        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      </Content>
     </ItemGroup>
 
 </Project>

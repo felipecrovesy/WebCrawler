@@ -1,7 +1,7 @@
 using System.IO.Abstractions.TestingHelpers;
 using WebCrawler.Infrastructure.Tools;
 
-namespace WebCrawler.UnitTests
+namespace WebCrawler.UnitTests.Core
 {
     public class DirectoryCreatorTests
     {
