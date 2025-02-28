@@ -1,16 +1,30 @@
+using System.IO.Abstractions;
 using WebCrawler.Core.Ports;
 
-namespace WebCrawler.Infrastructure.Tools;
-
-public class DirectoryCreator : IDirectoryCreator
+namespace WebCrawler.Infrastructure.Tools
 {
-    public Task Create(string directory, string path)
+    public class DirectoryCreator : IDirectoryCreator
     {
-        if (!Directory.Exists(directory))
+        private readonly IFileSystem _fileSystem;
+
+        public DirectoryCreator(IFileSystem fileSystem)
         {
-            Directory.CreateDirectory(directory);
+            _fileSystem = fileSystem;
         }
-        
-        return Task.FromResult(File.Exists(path) ? Task.FromResult(Task.CompletedTask) : Task.CompletedTask);
+
+        public Task Create(string directoryPath, string filePath)
+        {
+            if (!_fileSystem.Directory.Exists(directoryPath))
+            {
+                _fileSystem.Directory.CreateDirectory(directoryPath);
+            }
+
+            if (!_fileSystem.File.Exists(filePath))
+            {
+                _fileSystem.File.Create(filePath).Dispose();
+            }
+
+            return Task.CompletedTask;
+        }
     }
 }
