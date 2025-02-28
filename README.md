@@ -10,10 +10,7 @@
 
 1. 🤖 [Introdução](#introduction)
 2. ⚙️ [Tech Stack](#tech-stack)
-3. 🔋 [Recursos](#features)
-4. 🤸 [Como usar](#quick-start)
-5. 💾 [Variáveis de Ambiente](#envs)
-6. 📅 [Versões](#versions)
+3. 🤸 [Como usar](#quick-start)
 7. 🤝 [Contribuições](#contributing)
 8. 👥 [Autores](#authors)
 <br>
@@ -93,7 +90,7 @@ Acesse WebCrawler.UnitTest via terminal
 dotnet test
 ```
 
-## <a name="constributing">🤝 Contribuições</a>
+## <a name="contributing">🤝 Contribuições</a>
 
 Contriguições, issues, e novos recursos são vem vindos!
 
