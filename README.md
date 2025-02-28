@@ -76,9 +76,16 @@ git clone https://github.com/felipecrovesy/WebCrawler.git
 **02 - Rodar o Projeto**
 
 ```bash
-dot net run WebCrawler.Presentation
+dotnet run WebCrawler.Presentation
 ```
 
+**03 - Rodar os Tests**
+
+Acesse WebCrawler.UnitTest via terminal
+
+```bash
+dotnet test
+```
 
 ## <a name="constributing">🤝 Contribuições</a>
 
