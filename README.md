@@ -16,7 +16,7 @@
 6. 📅 [Versões](#versions)
 7. 🤝 [Contribuições](#contributing)
 8. 👥 [Autores](#authors)
-
+<br>
 
 ## <a name="introduction">🤖 Introdução</a>
 
@@ -30,28 +30,34 @@ Coleta de informações: Ao visitar cada página, o web crawler extrai informaç
 
 Indexação dos dados: As informações coletadas são organizadas e armazenadas em um banco de dados, formando um índice que facilita a busca e o acesso aos dados.
 
+<br>
+
 **Para que servem os web crawlers**:
 ___
-Mecanismos de busca: Os mecanismos de busca, como o Google, utilizam web crawlers para indexar a internet e construir seus índices de pesquisa.
-Monitoramento de sites: Web crawlers podem ser usados para monitorar sites em busca de alterações, como novas publicações ou atualizações de conteúdo.
-Coleta de dados: Empresas e pesquisadores podem utilizar web crawlers para coletar dados da web para análise, estudos de mercado e outras finalidades.
-Comparação de preços: Sites de comparação de preços utilizam web crawlers para coletar informações sobre produtos e preços em diferentes lojas online.
++ Mecanismos de busca: Os mecanismos de busca, como o Google, utilizam web crawlers para indexar a internet e construir seus índices de pesquisa.
++ Monitoramento de sites: Web crawlers podem ser usados para monitorar sites em busca de alterações, como novas publicações ou atualizações de conteúdo.
++ Coleta de dados: Empresas e pesquisadores podem utilizar web crawlers para coletar dados da web para análise, estudos de mercado e outras finalidades.
++ Comparação de preços: Sites de comparação de preços utilizam web crawlers para coletar informações sobre produtos e preços em diferentes lojas online.
 
-___
+
+<br>
 
 **Outros nomes para Webcrawler**:
-
+____
 + Crawler
 + Spider
 + Bot
 + Web robot
 + Indexador automático
 
+  <br>
+
 ## <a name="tech-stack">⚙️ Tech Stack</a>
 
 - dotnet 9.0
 - Sqlite
-
+  
+<br>
 
 ## <a name="quick-start">🤸 Como usar</a>
 
