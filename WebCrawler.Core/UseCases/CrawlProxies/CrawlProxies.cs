@@ -7,15 +7,18 @@ using WebCrawler.Core.Settings;
 
 namespace WebCrawler.Core.UseCases.CrawlProxies
 {
-    public class CrawlProxiesUseCase
+    public class CrawlProxies
     {
+        private static readonly SemaphoreSlim _semaphore = new(3, 3);
+        
         private readonly ICrawlProxiesRepository _repository;
         private readonly IExportFiles _exportFiles;
         private readonly IDirectoryCreator _directoryCreator;
         private const string Url = "https://proxyservers.pro/proxy/list/order/updated/order_dir/desc";
         private const int TotalOfProprieties = 6;
+        
 
-        public CrawlProxiesUseCase(
+        public CrawlProxies(
             ICrawlProxiesRepository repository,
             IDirectoryCreator directoryCreator,
             IExportFiles exportFiles
@@ -28,6 +31,8 @@ namespace WebCrawler.Core.UseCases.CrawlProxies
 
         public async Task Handle()
         {
+            await _semaphore.WaitAsync();
+
             using (var driver = new ChromeDriver(ChromeOptionsSettings.ChromeOptions()))
             {
                 try
@@ -70,13 +75,17 @@ namespace WebCrawler.Core.UseCases.CrawlProxies
                 {
                     Console.WriteLine($"Ocorreu um erro: {ex.Message}");
                 }
+                finally
+                {
+                    _semaphore.Release();
+                }
             }
         }
 
         private async Task SaveInfoToRepository(DateTime initialDate, int proxyList, string jsonFile, string driver)
         {
             var finalDate = DateTime.Now;
-            var pageNumbers = 1; //TODO: Consertar a lógica de Paginação
+            var pageNumbers = 1;
 
             var dbDirectory = Path.Combine(AppContext.BaseDirectory, "assets", "database");
             var dbPath = Path.Combine(dbDirectory, "executionsLog.db");

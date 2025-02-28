@@ -63,6 +63,7 @@ Para usar este projeto você deve ter instalado previamente os seguintes pacotes
 
 - [Git](https://git-scm.com/)
 - [dotnet 9.0](https://dotnet.microsoft.com/pt-br/download/dotnet/9.0)
+- [Chromium](https://www.chromium.org/getting-involved/download-chromium/)
 - [Sqlite](https://www.sqlite.org/download.html) (opcional para visualizar a tabela)
   <br/><br/>
 
