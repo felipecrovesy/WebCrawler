@@ -1,5 +1,5 @@
 <div align="center">
-  <h1 align="center">WebCrawl</h1>
+  <h1 align="center">WebCrawler</h1>
 
    <div align="center">
      É um programa de computador que navega pela internet de forma automatizada, coletando informações de páginas da web.
